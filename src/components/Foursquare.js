@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+
 
 var foursquare = require('react-foursquare')({
   clientID: '5AGYA4LOIPAHMHNYYKUZ5ORDEK1OC1O5ZFSLABK2MOZ2HZCB',

@@ -1,26 +1,45 @@
 import React, {Component} from "react";
-import {withGoogleMap,GoogleMap} from "react-google-maps";
+import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 class Map extends Component {
 
-	render() {
+	constructor(){
+		super()
+		this.state = {
+			map: null
+		}
+	}
 
-		const GoogleMapExample = withGoogleMap(props => (
+	mapMoved(){
+		console.log('mapMoved: '+JSON.stringify(this.state.map.getCenter()))
+	}
+
+	mapLoaded(map){
+		if (this.state.map != null)
+			return
+
+			this.setState({
+				map:map
+			})
+	}
+
+	render() {
+		
+		const markers = this.props.markers || []
+
+		return (
 
 			<GoogleMap
-				defaultCenter = {{lat: 40.756795, lng: -73.954298}}
-				defaultZoom = {13}
-			>
+				ref={this.mapLoaded.bind(this)}
+				onDragEnd={this.mapMoved.bind(this)}
+				defaultCenter = {this.props.center}
+				defaultZoom = {this.props.zoom}>
+				{markers.map((marker, index) => (
+						<Marker {...marker} />
+					)
+				)}
 			</GoogleMap>
-		));
-		return(
-			<div>
-				<GoogleMapExample
-					containerElement = { <div style = {{height: "500px", width: "500px"}}/> }
-					mapElement = { <div style = {{height: "100%"}}/> }
-				/>
-			</div>
-		);
+		)
 	}
 }
-export default Map;
+export default withGoogleMap(Map)

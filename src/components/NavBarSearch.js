@@ -1,9 +1,24 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import { Navbar, FormGroup, FormControl, Button } from "react-bootstrap"
-import { Route, RouteHandler, Link } from 'react-router'; 
+import { Navbar, FormGroup, FormControl, Button } from "react-bootstrap";
 
 class NavBarSearch extends Component {
+
+    constructor(){
+        super()
+        this.state = {
+            zipCode: ""
+        }
+    }
+
+    searchVenues(){
+        console.log('searchVenues: '+this.state.zipCode)
+    }
+
+    updateZipcode(event){
+        this.setState({
+            zipCode: event.target.value
+        })
+    }
 
     render() {
         return (
@@ -18,9 +33,9 @@ class NavBarSearch extends Component {
                 <Navbar.Collapse>
                     <Navbar.Form pullLeft>
                     <FormGroup>
-                        <FormControl type="text" placeholder="Search" />
+                        <FormControl onChange={this.updateZipcode.bind(this)} type="text" placeholder="Zip Code" />
                     </FormGroup>{' '}
-                    <Button type="submit">Submit</Button>
+                    <Button onClick={this.searchVenues.bind(this)}>Search</Button>
                     </Navbar.Form>
                 </Navbar.Collapse>
                 </Navbar>
