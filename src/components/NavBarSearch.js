@@ -47,7 +47,7 @@ class NavBarSearch extends Component {
 				<div className="container-fluid">
 					<div className="navbar-header">
 						<a className="navbar-brand" href="#">
-							<img alt="Brand" src="..." />
+							react-foursquare-google-maps
 						</a>
 						<form className="navbar-form navbar-left" role="search">
 							<div className="form-group">

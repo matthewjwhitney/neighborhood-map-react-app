@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import actions from '../actions'
 
 class Venues extends Component {
 
