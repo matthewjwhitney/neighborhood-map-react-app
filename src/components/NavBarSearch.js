@@ -1,24 +1,46 @@
 import React, { Component } from "react";
 import { Navbar, FormGroup, FormControl, Button } from "react-bootstrap";
+import superagent from 'superagent'
+import { connect } from 'react-redux'
+import actions from '../actions'
+
 
 class NavBarSearch extends Component {
 
     constructor(){
-        super()
-        this.state = {
-            zipCode: ""
-        }
-    }
+		super()
+		this.state = {
+			zipCode: ''
+		}
+	}
 
-    searchVenues(){
-        console.log('searchVenues: '+this.state.zipCode)
-    }
+	searchVenues(){
+		console.log('searchVenues: '+this.state.zipCode)
 
-    updateZipcode(event){
-        this.setState({
-            zipCode: event.target.value
-        })
-    }
+		const url = 'https://api.foursquare.com/v2/venues/search'
+
+		const params = {
+			v: '20140806',
+			near: this.state.zipCode, // actually zip code or city, not just zip code
+			client_id: 'VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD',
+			client_secret: 'UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ'
+		}
+
+		superagent
+		.get(url)
+		.query(params)
+		.set('Accept', 'application/json')
+		.end((err, response) => {
+			const venues = response.body.response.venues
+			this.props.venuesReceived(venues)
+		})
+	}
+
+	updateZipcode(event){
+		this.setState({
+			zipCode: event.target.value
+		})
+	}
 
     render() {
         return (
@@ -43,4 +65,17 @@ class NavBarSearch extends Component {
         )
     }
 }
-export default NavBarSearch;
+
+const stateToProps = (state) => {
+	return {
+		venues: state.venue
+	}
+}
+
+const dispatchToProps = (dispatch) => {
+	return {
+		venuesReceived: (venues) => dispatch(actions.venuesReceived(venues))
+	}
+}
+
+export default connect(stateToProps, dispatchToProps)(NavBarSearch)

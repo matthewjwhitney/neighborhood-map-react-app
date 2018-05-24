@@ -8,10 +8,14 @@
     "react-dom": "^16.3.2",
     "react-foursquare": "^1.0.3",
     "react-google-maps": "^9.4.5",
+    "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-bootstrap": "^0.24.4",
     "react-scripts": "1.1.4",
-    "recompose": "^0.27.1"
+    "recompose": "^0.27.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0",
+    "superagent": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
