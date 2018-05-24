@@ -12,7 +12,16 @@ class Venues extends Component {
 			<div>
 				<ol>
 					{ venues.map((venue, i) => {
-							return <li key={venue.id}>{venue.name}</li>
+							return (
+								<li key={venue.id}>
+									<div>
+										<h4>{venue.name}</h4>
+										<span>{venue.location.address}</span>
+										<span>{venue.location.address}</span><br />
+										<span><a href={venue.url}>{venue.url}</a></span>
+									</div>
+								</li>
+							)
 						})
 					}
 				</ol>
