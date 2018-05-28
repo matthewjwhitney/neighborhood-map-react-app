@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Map from './components/Map.js';
 import NavBarSearch from "./components/NavBarSearch.js";
-import store from './stores'
+
 import Venues from "./components/Venues.js"
-import { Provider } from 'react-redux'
+
+import {connect} from 'react-redux'
 
 class App extends Component {
 
@@ -20,28 +21,30 @@ class App extends Component {
       lat: 40.7575285,
       lng: -73.9884469
     }
-
+    const venues = this.props.venues;
     return (
-
-      <Provider store={store.initialize()}>
-        <div>
-          <NavBarSearch />
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-4">
-                <Venues />
-              </div>
-              <div className="col-md-8">
-                <Map
-                center= {location}
-                markers={this.state.venues}/>
-              </div>
+      <div>
+        <NavBarSearch />
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-4">
+              <Venues />
+            </div>
+            <div className="col-md-8">
+              <Map
+              center= {location}
+              markers={venues}/>
             </div>
           </div>
         </div>
-      </Provider>
-
+      </div>
     );
   }
 }
-export default App;
+const stateToProps = (state) => {
+    return {
+        venues: state.venue.venues
+    }
+}
+
+export default connect(stateToProps, null)(App);

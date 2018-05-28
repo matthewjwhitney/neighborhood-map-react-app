@@ -6,13 +6,19 @@ class Map extends Component {
 
 
 	render() {
+		console.log(this.props.markers);
 
 		const markers = this.props.markers || []
+		let center = this.props.center;
+		if(markers.length > 0) {
+            center = {lat: markers[0].location.lat, lng: markers[0].location.lng}
+		}
+
 
 		const MapWithMarkers = withGoogleMap(props =>
 		  <GoogleMap
 		    defaultZoom={8}
-		    defaultCenter={this.props.center}>
+		    defaultCenter={center}>
 				{markers.map((venue, i) => {
 					const marker = {
 						position: {
@@ -36,8 +42,8 @@ class Map extends Component {
 
 const stateToProps = (state) => {
 	return {
-		venues: state.venue.venues
+		venues: state.venue.venues,
 	}
 }
 
-export default connect(stateToProps)(Map)
+export default connect(stateToProps, null)(Map)

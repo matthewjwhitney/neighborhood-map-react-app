@@ -3,7 +3,6 @@ import superagent from 'superagent'
 import { connect } from 'react-redux'
 import actions from '../actions'
 
-
 class NavBarSearch extends Component {
 
     constructor(){
@@ -30,14 +29,13 @@ class NavBarSearch extends Component {
 		.query(params)
 		.set('Accept', 'application/json')
 		.end((err, response) => {
-
 			const venues = response.body.response.venues
-
 			this.props.venuesReceived(venues)
 
       this.setState({
 				venues: venues
       })
+			//this.props.store.dispatch(actions.venuesReceived(venues));
 		})
 	}
 
