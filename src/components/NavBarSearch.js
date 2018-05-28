@@ -19,9 +19,10 @@ class NavBarSearch extends Component {
 
 		const params = {
 			v: '20140806',
-			near: this.state.zipCode, // this is actually zip code OR city, not just zip code
+      near: this.state.zipCode, // this is actually zip code OR city, not just zip code
 			client_id: 'VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD',
-			client_secret: 'UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ'
+			client_secret: 'UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ',
+      limit: 10
 		}
 
 		superagent
@@ -53,20 +54,14 @@ class NavBarSearch extends Component {
 
     render() {
         return (
-          <nav className="navbar navbar-default">
-    				<div className="container-fluid">
-    					<div className="navbar-header">
+          <nav className="navbar navbar-light bg-light">
     						<a className="navbar-brand" href="#">
     							react-foursquare-google-maps
     						</a>
-    						<form className="navbar-form navbar-left" role="search">
-    							<div className="form-group">
-    								<input onChange={this.updateZipcode.bind(this)} type="text" className="form-control" placeholder="City or Zip Code" />
-    							</div>
-    							<button onClick={this.searchVenues.bind(this)} className="btn btn-default">Search</button>
+    						<form className="form-inline">
+    								<input onChange={this.updateZipcode.bind(this)} type="search" className="form-control mr-sm-2" placeholder="City or Zip Code" aria-label="Search" />
+    							<button onClick={this.searchVenues.bind(this)} className="btn btn-primary my-2 my-sm-0">Search</button>
     						</form>
-    					</div>
-    				</div>
     			</nav>
         )
     }

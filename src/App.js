@@ -27,13 +27,15 @@ class App extends Component {
         <NavBarSearch />
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-4">
-              <Venues />
-            </div>
-            <div className="col-md-8">
+            <div className="col">
               <Map
               center= {location}
               markers={venues}/>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <Venues />
             </div>
           </div>
         </div>

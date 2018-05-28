@@ -5,24 +5,31 @@ class Venues extends Component {
 
 	render(){
 
+		let cardWidth = {
+			width: "100%"
+		}
+
 		const venues = this.props.venues || []
 
 		return (
-			<div>
-				<ol>
+			<div className="row">
 					{ venues.map((venue, i) => {
 							return (
-								<li key={venue.id}>
-									<div>
-										<h4>{venue.name}</h4>
-										<span>{venue.location.address}</span><br />
-										<span><a href={venue.url}>{venue.url}</a></span>
+								<div key={venue.id} className="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+									<div className="card" style={cardWidth}>
+									  <img className="card-img-top" src=".../100px180/" alt="Card image cap" />
+									  <div className="card-body">
+									    <h5 className="card-title">{venue.name}</h5>
+									    <p className="card-text">
+												<span>{venue.location.address}</span><br />
+												<span><a href={venue.url}>{venue.url}</a></span></p>
+									    <a href="#" className="btn btn-primary">Show on Map</a>
+									  </div>
 									</div>
-								</li>
+								</div>
 							)
 						})
 					}
-				</ol>
 			</div>
 		)
 	}
