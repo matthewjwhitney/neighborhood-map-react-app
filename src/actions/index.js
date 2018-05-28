@@ -7,8 +7,14 @@ export default {
 			type: constants.VENUES_RECEIVED,
 			venues: venues
 		}
-	}
+	},
 
+	zipCodeReceived: (zipCode) => {
+		return {
+			type: constants.ZIPCODE_RECEIVED,
+			zipCode: zipCode
+		}
+	}
 
 
 }

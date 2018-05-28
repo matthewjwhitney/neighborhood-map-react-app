@@ -1,9 +1,11 @@
-import Nav from './Nav'
+import NavBarSearch from './NavBarSearch'
 import Venues from './Venues'
+import Map from './Map'
 
 export {
 
-	Nav,
+	Map,
+	NavBarSearch,
 	Venues
 
 }

@@ -15,7 +15,6 @@ class Venues extends Component {
 								<li key={venue.id}>
 									<div>
 										<h4>{venue.name}</h4>
-										<span>{venue.location.address}</span>
 										<span>{venue.location.address}</span><br />
 										<span><a href={venue.url}>{venue.url}</a></span>
 									</div>
@@ -27,7 +26,7 @@ class Venues extends Component {
 			</div>
 		)
 	}
-	
+
 }
 
 const stateToProps = (state) => {

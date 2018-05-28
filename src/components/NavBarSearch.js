@@ -30,12 +30,24 @@ class NavBarSearch extends Component {
 		.query(params)
 		.set('Accept', 'application/json')
 		.end((err, response) => {
+
 			const venues = response.body.response.venues
+
 			this.props.venuesReceived(venues)
+
+      this.setState({
+				venues: venues
+      })
 		})
 	}
 
 	updateZipcode(event){
+    event.preventDefault()
+
+    const zipCode = this.state.zipCode
+
+    this.props.zipCodeReceived(zipCode)
+
 		this.setState({
 			zipCode: event.target.value
 		})
@@ -43,34 +55,36 @@ class NavBarSearch extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-default">
-				<div className="container-fluid">
-					<div className="navbar-header">
-						<a className="navbar-brand" href="#">
-							react-foursquare-google-maps
-						</a>
-						<form className="navbar-form navbar-left" role="search">
-							<div className="form-group">
-								<input onChange={this.updateZipcode.bind(this)} type="text" className="form-control" placeholder="City or Zip Code" />
-							</div>
-							<button onClick={this.searchVenues.bind(this)} className="btn btn-default">Search</button>
-						</form>
-					</div>
-				</div>
-			</nav>
+          <nav className="navbar navbar-default">
+    				<div className="container-fluid">
+    					<div className="navbar-header">
+    						<a className="navbar-brand" href="#">
+    							react-foursquare-google-maps
+    						</a>
+    						<form className="navbar-form navbar-left" role="search">
+    							<div className="form-group">
+    								<input onChange={this.updateZipcode.bind(this)} type="text" className="form-control" placeholder="City or Zip Code" />
+    							</div>
+    							<button onClick={this.searchVenues.bind(this)} className="btn btn-default">Search</button>
+    						</form>
+    					</div>
+    				</div>
+    			</nav>
         )
     }
 }
 
 const stateToProps = (state) => {
 	return {
-		venues: state.venue
+		venues: state.venue,
+    zipCode: state.zipCode
 	}
 }
 
 const dispatchToProps = (dispatch) => {
 	return {
-		venuesReceived: (venues) => dispatch(actions.venuesReceived(venues))
+		venuesReceived: (venues) => dispatch(actions.venuesReceived(venues)),
+    zipCodeReceived: (zipCode) => dispatch(actions.zipCodeReceived(zipCode))
 	}
 }
 

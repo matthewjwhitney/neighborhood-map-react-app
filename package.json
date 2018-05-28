@@ -7,6 +7,8 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2",
     "react-foursquare": "^1.0.3",
+    "react-geolocated": "^2.4.0",
+    "react-geolocation": "^1.0.3",
     "react-google-maps": "^9.4.5",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",

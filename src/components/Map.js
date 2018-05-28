@@ -1,45 +1,43 @@
 import React, {Component} from "react";
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import { withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { connect } from 'react-redux'
 
 class Map extends Component {
 
-	constructor(){
-		super()
-		this.state = {
-			map: null
-		}
-	}
-
-	mapMoved(){
-		console.log('mapMoved: '+JSON.stringify(this.state.map.getCenter()))
-	}
-
-	mapLoaded(map){
-		if (this.state.map != null)
-			return
-
-			this.setState({
-				map:map
-			})
-	}
 
 	render() {
-		
+
 		const markers = this.props.markers || []
 
-		return (
+		const MapWithMarkers = withGoogleMap(props =>
+		  <GoogleMap
+		    defaultZoom={8}
+		    defaultCenter={this.props.center}>
+				{markers.map((venue, i) => {
+					const marker = {
+						position: {
+							lat: venue.location.lat,
+							lng: venue.location.lng
+						}
+					}
+					return <Marker key={i} {...marker} />
+				})}
+		  </GoogleMap>
+		)
 
-			<GoogleMap
-				ref={this.mapLoaded.bind(this)}
-				onDragEnd={this.mapMoved.bind(this)}
-				defaultCenter = {this.props.center}
-				defaultZoom = {this.props.zoom}>
-				{markers.map((marker, index) => (
-						<Marker {...marker} />
-					)
-				)}
-			</GoogleMap>
+		return (
+			<MapWithMarkers
+				containerElement={<div style={{ height: `400px` }} />}
+				mapElement={<div style={{ height: `100%` }} />}
+			/>
 		)
 	}
 }
-export default withGoogleMap(Map)
+
+const stateToProps = (state) => {
+	return {
+		venues: state.venue.venues
+	}
+}
+
+export default connect(stateToProps)(Map)
