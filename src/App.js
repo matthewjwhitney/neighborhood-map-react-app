@@ -23,9 +23,8 @@ class App extends Component {
     }
     const venues = this.props.venues;
     return (
-      <div>
+      <div className="container-fluid">
         <NavBarSearch />
-        <div className="container-fluid">
           <div className="row">
             <div className="col">
               <Map
@@ -38,7 +37,6 @@ class App extends Component {
               <Venues />
             </div>
           </div>
-        </div>
       </div>
     );
   }

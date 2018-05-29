@@ -6,18 +6,18 @@ class Map extends Component {
 
 
 	render() {
-		console.log(this.props.markers);
 
 		const markers = this.props.markers || []
+
 		let center = this.props.center;
+
 		if(markers.length > 0) {
             center = {lat: markers[0].location.lat, lng: markers[0].location.lng}
 		}
 
-
 		const MapWithMarkers = withGoogleMap(props =>
 		  <GoogleMap
-		    defaultZoom={8}
+		    defaultZoom={16}
 		    defaultCenter={center}>
 				{markers.map((venue, i) => {
 					const marker = {
@@ -33,7 +33,7 @@ class Map extends Component {
 
 		return (
 			<MapWithMarkers
-				containerElement={<div style={{ height: `400px` }} />}
+				containerElement={<div style={{ height: `300px` }} />}
 				mapElement={<div style={{ height: `100%` }} />}
 			/>
 		)
