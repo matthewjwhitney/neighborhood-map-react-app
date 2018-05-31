@@ -21,7 +21,7 @@ class App extends Component {
       lat: 40.7575285,
       lng: -73.9884469
     }
-    const venues = this.props.venues;
+    const { venues, selectedVenue } = this.props;
     return (
       <div className="container-fluid">
         <NavBarSearch />
@@ -29,7 +29,9 @@ class App extends Component {
             <div className="col">
               <Map
               center= {location}
-              markers={venues}/>
+              markers={venues}
+              selectedMarker={selectedVenue}
+              />
             </div>
           </div>
           <div className="row">
@@ -43,7 +45,8 @@ class App extends Component {
 }
 const stateToProps = (state) => {
     return {
-        venues: state.venue.venues
+        venues: state.venue.venues,
+        selectedVenue: state.venue.selectedVenue
     }
 }
 

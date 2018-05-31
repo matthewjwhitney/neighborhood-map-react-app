@@ -1,7 +1,8 @@
 import constants from '../constants'
 
 var initialState = {
-	venues: null
+	venues: null,
+	selectedVenue: null
 }
 
 export default (state = initialState, action) => {
@@ -12,6 +13,12 @@ export default (state = initialState, action) => {
 			let updated = Object.assign({}, state)
 			updated['venues'] = action.venues
 			return updated
+
+		case constants.VENUE_SELECTED: {
+			let updated = Object.assign({}, state)
+			updated['selectedVenue'] = action.selectedVenue
+			return updated
+		}
 
 		default:
 			return state

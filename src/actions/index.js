@@ -14,6 +14,13 @@ export default {
 			type: constants.ZIPCODE_RECEIVED,
 			zipCode: zipCode
 		}
+	},
+
+	venueSelected: venue => {
+		return {
+			type: constants.VENUE_SELECTED,
+			selectedVenue: venue
+		}
 	}
 
 
