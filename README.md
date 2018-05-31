@@ -2,6 +2,8 @@
 
   This is the final project of the Front End Web Developer Nanodegree Program through [Udacity](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001). Check out the [project rubric](https://review.udacity.com/#!/rubrics/1351/view). I took the project one step further and allowed the user to choose a neighborhood and a category to filter a list of venues from the Foursquare API rather than hardcode a particular neighborhood with venues.
 
+  You can view this application running on my portfolio website [here](http://www.matthewjwhitney.com/neighborhood-map-react-app)
+
 ## Development tools
 
   - [react](https://github.com/facebook/react)
@@ -12,7 +14,11 @@
   - [superagent](https://github.com/visionmedia/superagent)
   - [Bootstrap v4.1](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
 
-## This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+## Installation and usage
+
+Clone the project from my GitHub profile, unzip, open your terminal, cd into the folder, run <code>npm install</code> to download the dependencies, and then refer to the create-react-app instructions that i've included below for usage. Running <code>npm start</code> will begin the development mode and serve the compiled application to your browser at [http://localhost:3000](http://localhost:3000).
+
+#### This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
   Below you will find some information on how to perform common tasks.<br>
   You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
