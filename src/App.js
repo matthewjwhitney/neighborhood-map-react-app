@@ -20,7 +20,7 @@ class App extends Component {
     const location = {
       lat: 40.7575285,
       lng: -73.9884469
-    }
+    } /*this is a placeholder until the user presses the search button in NavBarSearch Component*/
     const { venues, selectedVenue } = this.props;
     return (
       <div className="container-fluid">
@@ -29,8 +29,8 @@ class App extends Component {
             <div className="col">
               <Map
               center= {location}
-              markers={venues}
-              selectedMarker={selectedVenue}
+              markers={venues} /*comes from Venue component through redux*/
+              selectedMarker={selectedVenue} /*comes from Venue component through redux*/
               />
             </div>
           </div>

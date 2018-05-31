@@ -20,7 +20,7 @@ class NavBarSearch extends Component {
 
 		const params = {
 			v: '20140806',
-      near: this.state.zipCode, // this is actually zip code OR city, not just zip code
+      near: this.state.zipCode, /* this is actually zip code OR city, not just zip code */
 			client_id: 'VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD',
 			client_secret: 'UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ',
       limit: 12,
@@ -91,8 +91,8 @@ class NavBarSearch extends Component {
             <option value="4d4b7105d754a06379d81259">
               Travel & Transport</option>
           </select>
-					<input onChange={this.updateZipcode.bind(this)} type="search" className="form-control" placeholder="City or Zip Code" aria-label="Search" />
-				  <button onClick={this.searchVenues.bind(this)} className="btn btn-primary">Search</button>
+					<input onChange={this.updateZipcode.bind(this)} type="search" className="form-control" placeholder="City or Zip Code" aria-label="Search" /> {/* this is where user interaction begins*/}
+				  <button onClick={this.searchVenues.bind(this)} className="btn btn-primary">Search</button> {/* this is where user interaction begins*/}
 				</form>
 			</nav>
     )
