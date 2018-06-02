@@ -23,8 +23,11 @@ class App extends Component {
     } /*this is a placeholder until the user presses the search button in NavBarSearch Component*/
     const { venues, selectedVenue } = this.props;
     return (
-      <div className="container-fluid">
+      <div className="container">
         <NavBarSearch />
+        <div>
+          <span class="navbar-text">Enter a City or Zip Code and press Search to see a list of venues from Foursquare and markers on the Google Map. Use the Categories dropdown to filter your search.</span>
+        </div>
           <div className="row">
             <div className="col">
               <Map

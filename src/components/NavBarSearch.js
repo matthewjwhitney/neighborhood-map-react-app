@@ -63,8 +63,7 @@ class NavBarSearch extends Component {
   render() {
     return (
       <nav className="navbar navbar-dark bg-dark">
-				<a className="navbar-brand" href="#neighborhood-map-react-app">
-					Neighborhood Maps powered by Foursquare
+				<a className="navbar-brand" href="#neighborhood-map-react-app">Neighborhood Maps
 				</a>
 				<form className="form-inline">
           <select id="category" onChange={this.changeCategory.bind(this)} className="form-control">
